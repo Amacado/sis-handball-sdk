@@ -9,6 +9,7 @@ class xmlRead{
         "option"   => null
     );
     
+    // Types of listings available
     private $optionsList = array(
         "Alle_Spielen" => 1,
         "Letzten_15_Spielen" => 2,
@@ -19,13 +20,26 @@ class xmlRead{
         "Tabelle_Heim" => 6,
         "Tabelle_Auswarts" => 7
     );
-
-     function __construct($user, $password, $option) {
+    
+    
+    /*
+     * The constructor uses parameters for the configuration 
+     * of the url of call to the api
+     */
+    function __construct($user, $password, $option) {
        $this->configuration[0] = $user;
        $this->configuration[1] = $password;
        $this->configuration[2] = $option;
    }
    
+   
+   /*
+     * The Seter for the construction of the url. 
+     * The seter needs the parameters obtained in the constructor plus another.
+     * The parameter directly obtained by the seter is used to select the type 
+     * of listing.   
+     * STRING 
+     */
     function setUrlXml($data){
         if (array_key_exists($data, $this->optionsList)) {
         $this->urlXml = "https://www.sis-handball.de/xmlexport/xml_dyn.aspx?"
@@ -33,12 +47,24 @@ class xmlRead{
                 ."&pass=".$this->configuration[1]
                 ."&art=".$this->optionsList[$data]
                 ."&auf=".$this->configuration[2]; 
+        $this->setXmlArray();
+        
         } else {
             echo "Index does not exist. ";
             exit;
         }
      }
     
+     function getXmlArray(){
+         
+             return $this->xmlArray;
+         
+     }
+     
+     
+    /*
+     * Make url in an array.
+     */
     function setXmlArray(){
        
        $xmlData = simplexml_load_file($this->urlXml);
@@ -46,13 +72,45 @@ class xmlRead{
    
     }    
     
-    function getXmlArray(){
+    
+   
+    
+    
+    /*
+     * We get the object.
+     */
+    function getXmlObect(){
         
-       return $this->xmlArray;
+       return $this->arrayToObject($this->xmlArray);
        
     }
     
- 
+    
+    
+    /*
+     * Make array in an Object.
+     */
+    function arrayToObject($array) {
+       if (!is_array($array)) {
+           return $array;
+       }
+
+       $object = new stdClass();
+       if (is_array($array) && count($array) > 0) {
+           foreach ($array as $name=>$value) {
+               $name = strtolower(trim($name));
+               if (!empty($name)) {
+                   $object->$name = arrayToObject($value);
+               }
+           }
+       
+           return $object;
+       }
+       else {
+           
+           return FALSE;
+       }
+   }
     
     
 }
