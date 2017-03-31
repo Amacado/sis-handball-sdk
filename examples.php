@@ -16,7 +16,6 @@ include ("xmlRead.php");
 
 $b = new xmlRead("1220403116", "361992", "001517418000000000000000000000000022000" );
 $b->setUrlXml("Nachsten_30_Spielen");
-$b->setXmlArray();
 
 
 $p = $b->getXmlArray();

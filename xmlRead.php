@@ -46,6 +46,8 @@ class xmlRead{
                 ."&pass=".$this->configuration[1]
                 ."&art=".$this->optionsList[$data]
                 ."&auf=".$this->configuration[2]; 
+        $this->setXmlArray();
+        
         } else {
             echo "Index does not exist. ";
             exit;
