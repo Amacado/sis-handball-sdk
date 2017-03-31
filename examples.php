@@ -17,7 +17,16 @@ include ("xmlRead.php");
 $b = new xmlRead("1220403116", "361992", "001517418000000000000000000000000022000" );
 $b->setUrlXml("Nachsten_30_Spielen");
 $b->setXmlArray();
-$b->getXmlArray();
+
+
+$p = $b->getXmlArray();
+echo "Liga: ". $p->Spielklasse->Liga." </br>";
+echo "Name: ". $p->Spielklasse->Name." </br>*******************</br>";
+echo "Heim Position 0: ". $p->Spiel[0]->Heim." </br>*******************</br>";
+echo "Heim Position 1: ". $p->Spiel[1]->Heim." </br>*******************</br>";
+echo "Heim Position 2: ". $p->Spiel[2]->Heim." </br>*******************</br>";
+
+
 print_r($b->getXmlArray());
 
 
