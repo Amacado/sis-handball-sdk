@@ -9,6 +9,7 @@ class xmlRead{
         "option"   => null
     );
     
+    // Types of listings available
     private $optionsList = array(
         "Alle_Spielen" => 1,
         "Letzten_15_Spielen" => 2,
@@ -19,13 +20,25 @@ class xmlRead{
         "Tabelle_Heim" => 6,
         "Tabelle_Auswarts" => 7
     );
-
-     function __construct($user, $password, $option) {
+    
+    
+    /*
+     * The constructor uses parameters for the configuration 
+     * of the url of call to the api
+     */
+    function __construct($user, $password, $option) {
        $this->configuration[0] = $user;
        $this->configuration[1] = $password;
        $this->configuration[2] = $option;
    }
    
+   
+   /*
+     * The Seter for the construction of the url. 
+     * The seter needs the parameters obtained in the constructor plus another.
+     * The parameter directly obtained by the seter is used to select the type 
+     * of listing.   
+     */
     function setUrlXml($data){
         if (array_key_exists($data, $this->optionsList)) {
         $this->urlXml = "https://www.sis-handball.de/xmlexport/xml_dyn.aspx?"
@@ -39,6 +52,11 @@ class xmlRead{
         }
      }
     
+     
+     
+    /*
+     * Make url in an array.
+     */
     function setXmlArray(){
        
        $xmlData = simplexml_load_file($this->urlXml);
@@ -46,12 +64,21 @@ class xmlRead{
    
     }    
     
+    
+    /*
+     * We get the object.
+     */
     function getXmlArray(){
         
        return $this->arrayToObject($this->xmlArray);
        
     }
     
+    
+    
+    /*
+     * Make array in an Object.
+     */
     function arrayToObject($array) {
        if (!is_array($array)) {
            return $array;
