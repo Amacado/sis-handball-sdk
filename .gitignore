@@ -1,2 +1,3 @@
 option_configuration.txt
-nbproject/
+nbproject/*
+docs/*

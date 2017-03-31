@@ -38,6 +38,7 @@ class xmlRead{
      * The seter needs the parameters obtained in the constructor plus another.
      * The parameter directly obtained by the seter is used to select the type 
      * of listing.   
+     * STRING 
      */
     function setUrlXml($data){
         if (array_key_exists($data, $this->optionsList)) {
@@ -54,6 +55,11 @@ class xmlRead{
         }
      }
     
+     function getXmlArray(){
+         
+             return $this->xmlArray;
+         
+     }
      
      
     /*
@@ -67,10 +73,13 @@ class xmlRead{
     }    
     
     
+   
+    
+    
     /*
      * We get the object.
      */
-    function getXmlArray(){
+    function getXmlObect(){
         
        return $this->arrayToObject($this->xmlArray);
        
@@ -94,9 +103,11 @@ class xmlRead{
                    $object->$name = arrayToObject($value);
                }
            }
+       
            return $object;
        }
        else {
+           
            return FALSE;
        }
    }
