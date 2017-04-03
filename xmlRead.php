@@ -6,8 +6,6 @@ class xmlRead{
     
     private $urlXml;
     private $xmlArray;
-    const USER = '1220403116';
-    const PASSWORD = '361992';
     protected $configuration = array();
     
     // Types of listings available
@@ -25,8 +23,12 @@ class xmlRead{
     
     function __construct(){
         
-        $this->setConfiguration(self::USER);
-        $this->setConfiguration(self::PASSWORD);
+        // Access and configuration of access data to the api.
+        $data = file_get_contents("config.json");
+        $conecction = json_decode($data, true);
+        $this->setConfiguration($conecction["conection"]["user"]);
+        $this->setConfiguration($conecction["conection"]["password"]);
+    
     }
    
     function getConfiguration($position) {
@@ -172,46 +174,13 @@ class xmlRead{
     }    
     
     
-   
-    
-    
-    /*
-     * We get the object.
-     */
-    function getXmlObect(){
-        
-       return $this->arrayToObject($this->xmlArray);
-       
-    }
-    
-    
-    
-    /*
-     * Make array in an Object.
-     */
-    function arrayToObject($array) {
-       if (!is_array($array)) {
-           return $array;
-       }
-
-       $object = new stdClass();
-       if (is_array($array) && count($array) > 0) {
-           foreach ($array as $name=>$value) {
-               $name = strtolower(trim($name));
-               if (!empty($name)) {
-                   $object->$name = arrayToObject($value);
-               }
-           }
-       
-           return $object;
-       }
-       else {
-           
-           return FALSE;
-       }
+   function readYaml(){
+    $cache = sfProjectConfiguration::getActive()->getConfigCache(); 
+        $cache->registerConfigHandler('config.yaml','sfSimpleYamlConfigHandler'); 
+        $path = $cache->CheckConfig('config.yaml'); 
+        $data = include $path; 
+        return $data;
    }
-    
-    
 }
 
 
