@@ -2,78 +2,153 @@
 
 class platzierung {
     
-    private $liga;
+    private $nr;
+    private $verein;
+    private $spiele;
+    private $spieleInsgesamt;
+    private $gewonnen;
+    private $unentschieden;
+    private $verloren;
+    private $torePlus;
+    private $toreMinus;
+    private $d;
+    private $punktePlus;
+    private $punkteMinus;
     private $name;
-    private $dv;
-    private $aufsteigsplaetze;
-    private $absteigsplaetze;
-    private $mannSchaften;
-    private $apareoId;
-    private $apareoSeason;
+    private $toreAuswaertsPlus;
+    private $vereinsNr;
+    private $dVPlatz;
     
-    function getLiga() {
-        return $this->liga;
+    function getDVPlatz() {
+        return $this->dVPlatz;
+    }
+
+    function setDVPlatz($dVPlatz) {
+        $this->dVPlatz = $dVPlatz;
+    }
+
+        
+    function getNr() {
+        return $this->nr;
+    }
+
+    function getVerein() {
+        return $this->verein;
+    }
+
+    function getSpiele() {
+        return $this->spiele;
+    }
+
+    function getSpieleInsgesamt() {
+        return $this->spieleInsgesamt;
+    }
+
+    function getGewonnen() {
+        return $this->gewonnen;
+    }
+
+    function getUnentschieden() {
+        return $this->unentschieden;
+    }
+
+    function getVerloren() {
+        return $this->verloren;
+    }
+
+    function getTorePlus() {
+        return $this->torePlus;
+    }
+
+    function getToreMinus() {
+        return $this->toreMinus;
+    }
+
+    function getD() {
+        return $this->d;
+    }
+
+    function getPunktePlus() {
+        return $this->punktePlus;
+    }
+
+    function getPunkteMinus() {
+        return $this->punkteMinus;
     }
 
     function getName() {
         return $this->name;
     }
 
-    function getDv() {
-        return $this->dv;
+    function getToreAuswaertsPlus() {
+        return $this->toreAuswaertsPlus;
     }
 
-    function getAufsteigsplaetze() {
-        return $this->aufsteigsplaetze;
+    function getVereinsNr() {
+        return $this->vereinsNr;
     }
 
-    function getAbsteigsplaetze() {
-        return $this->absteigsplaetze;
+    function setNr($nr) {
+        $this->nr = $nr;
     }
 
-    function getMannSchaften() {
-        return $this->mannSchaften;
+    function setVerein($verein) {
+        $this->verein = $verein;
     }
 
-    function getApareoId() {
-        return $this->apareoId;
+    function setSpiele($spiele) {
+        $this->spiele = $spiele;
     }
 
-    function getApareoSeason() {
-        return $this->apareoSeason;
+    function setSpieleInsgesamt($spieleInsgesamt) {
+        $this->spieleInsgesamt = $spieleInsgesamt;
     }
 
-    function setLiga($liga) {
-        $this->liga = $liga;
+    function setGewonnen($gewonnen) {
+        $this->gewonnen = $gewonnen;
+    }
+
+    function setUnentschieden($unentschieden) {
+        $this->unentschieden = $unentschieden;
+    }
+
+    function setVerloren($verloren) {
+        $this->verloren = $verloren;
+    }
+
+    function setTorePlus($torePlus) {
+        $this->torePlus = $torePlus;
+    }
+
+    function setToreMinus($toreMinus) {
+        $this->toreMinus = $toreMinus;
+    }
+
+    function setD($d) {
+        $this->d = $d;
+    }
+
+    function setPunktePlus($punktePlus) {
+        $this->punktePlus = $punktePlus;
+    }
+
+    function setPunkteMinus($punkteMinus) {
+        $this->punkteMinus = $punkteMinus;
     }
 
     function setName($name) {
         $this->name = $name;
     }
 
-    function setDv($dv) {
-        $this->dv = $dv;
+    function setToreAuswaertsPlus($toreAuswaertsPlus) {
+        $this->toreAuswaertsPlus = $toreAuswaertsPlus;
     }
 
-    function setAufsteigsplaetze($aufsteigsplaetze) {
-        $this->aufsteigsplaetze = $aufsteigsplaetze;
+    function setVereinsNr($vereinsNr) {
+        $this->vereinsNr = $vereinsNr;
     }
 
-    function setAbsteigsplaetze($absteigsplaetze) {
-        $this->absteigsplaetze = $absteigsplaetze;
-    }
 
-    function setMannSchaften($mannSchaften) {
-        $this->mannSchaften = $mannSchaften;
-    }
-
-    function setApareoId($apareoId) {
-        $this->apareoId = $apareoId;
-    }
-
-    function setApareoSeason($apareoSeason) {
-        $this->apareoSeason = $apareoSeason;
-    }
 
 
     

@@ -19,6 +19,7 @@ class spiel {
     private $spielBericht;
     private $spielVon;
     private $spielBis;
+    private $zuschauer;
     private $zsGespann;
     private $sbGespann;
     private $heim;
@@ -26,13 +27,16 @@ class spiel {
     private $gast;
     private $gastNr;
     private $hallenName;
-    private $halleStrasse;
+    private $hallenStrasse;
     private $hallenOrt;
     private $ligaName;
-    private $gespanName;
+    private $gespannName;
+    private $spielTag;
     
+
+
     
-    function setLiga($liga) {
+    function setLiga($liga) { 
         $this->liga = $liga;
     }
 
@@ -100,6 +104,10 @@ class spiel {
         $this->spielBis = $spielBis;
     }
 
+    function setZuschauer($zuschauer) {
+        $this->zuschauer = $zuschauer;
+    }    
+    
     function setZsGespann($zsGespann) {
         $this->zsGespann = $zsGespann;
     }
@@ -128,8 +136,8 @@ class spiel {
         $this->hallenName = $hallenName;
     }
 
-    function setHalleStrasse($halleStrasse) {
-        $this->halleStrasse = $halleStrasse;
+    function setHallenStrasse($hallenStrasse) {
+        $this->hallenStrasse = $hallenStrasse;
     }
 
     function setHallenOrt($hallenOrt) {
@@ -140,10 +148,21 @@ class spiel {
         $this->ligaName = $ligaName;
     }
 
-    function setGespanName($gespanName) {
-        $this->gespanName = $gespanName;
+    function setGespannName($gespannName) {
+        $this->gespannName = $gespannName;
     }
 
+   
+    function setSpielTag($spileTag) {
+        $this->spileTag = $spileTag;
+    }
+    
+    
+    function getSpielTag() {
+        return $this->spileTag;
+    }
+
+    
     function getLiga() {
         return $this->liga;
     }
@@ -211,7 +230,11 @@ class spiel {
     function getSpielBis() {
         return $this->spielBis;
     }
-
+    
+    function getZuschauer() {
+        return $this->zuschauer;
+    }
+    
     function getZsGespann() {
         return $this->zsGespann;
     }
@@ -240,8 +263,8 @@ class spiel {
         return $this->hallenName;
     }
 
-    function getHalleStrasse() {
-        return $this->halleStrasse;
+    function getHallenStrasse() {
+        return $this->hallenStrasse;
     }
 
     function getHallenOrt() {
@@ -252,8 +275,8 @@ class spiel {
         return $this->ligaName;
     }
 
-    function getGespanName() {
-        return $this->gespanName;
+    function getGespannName() {
+        return $this->gespannName;
     }
 
 
