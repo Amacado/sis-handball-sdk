@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/xmlLesen/config.json</file>
+            <file>file:/C:/xampp/htdocs/xmlLesen/examples3.php</file>
             <file>file:/C:/xampp/htdocs/xmlLesen/xmlRead.php</file>
-            <file>file:/C:/xampp/htdocs/xmlLesen/MyExceptions.php</file>
+            <file>file:/C:/xampp/htdocs/xmlLesen/assets/.htaccess</file>
+            <file>file:/C:/xampp/htdocs/xmlLesen/config/config.php</file>
             <file>file:/C:/xampp/htdocs/xmlLesen/querySis.php</file>
+            <file>file:/C:/xampp/htdocs/xmlLesen/option_configuration.txt</file>
+            <file>file:/C:/xampp/htdocs/xmlLesen/languages/modules.php</file>
             <file>file:/C:/xampp/htdocs/xmlLesen/.gitignore</file>
         </group>
     </open-files>
