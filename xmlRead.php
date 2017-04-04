@@ -1,12 +1,14 @@
 <?php
 include ("spiel.php");
 include ("platzierung.php");
+include ("MyExceptions.php");
 
 class xmlRead{
     
     private $urlXml;
     private $xmlArray;
     protected $configuration = array();
+    private $exceptions;
     
     // Types of listings available
     private $optionsList = array(
@@ -24,21 +26,36 @@ class xmlRead{
     function __construct(){
         
         // Access and configuration of access data to the api.
-        $data = file_get_contents("config.json");
+        $nameFile = "config.json";
+        
+        // Check Excepctions.
+        $this->exceptions = new myExceptions("Upps!");
+        $this->exceptions->findFile($nameFile);
+        
+        $data = file_get_contents($nameFile); 
         $conecction = json_decode($data, true);
+        
+        // Check Data
+        $this->exceptions->checkUserPass($conecction["conection"]); 
+        
         $this->setConfiguration($conecction["conection"]["user"]);
         $this->setConfiguration($conecction["conection"]["password"]);
-    
+       
     }
    
+    
+    
     function getConfiguration($position) {
         return $this->configuration[$position];
     }
 
+    
+    
     function setConfiguration($configuration) {
         $this->configuration[] = $configuration;
     }
 
+    
        
     function showNextGames($nGames){
        
@@ -50,11 +67,11 @@ class xmlRead{
         }
         $this->setUrlXml($listType);
         $resultXmlArray = $this->getXmlArray();
-       
-        
+
         $res =  $this->storeGames(array_slice($resultXmlArray["Spiel"], 0, $nGames),"spiel");
         return $res;
     }
+    
     
 
     function showLastGames($nGames){
@@ -68,10 +85,11 @@ class xmlRead{
         $this->setUrlXml($listType);
         $resultXmlArray = $this->getXmlArray();
        
-        
         $res =  $this->storeGames(array_slice($resultXmlArray["Spiel"], 0, $nGames),"spiel");
         return $res;
     }
+    
+    
     
     function showAllGames(){
         
@@ -82,6 +100,8 @@ class xmlRead{
         
     }
     
+    
+    
     function showTabelle(){
         
         $this->setUrlXml("Tabelle");
@@ -90,6 +110,8 @@ class xmlRead{
         return $res;
     }
    
+    
+    
     function showTabelleHeim(){
         
         $this->setUrlXml("Tabelle_Heim");
@@ -98,6 +120,8 @@ class xmlRead{
         return $res;
     }
  
+    
+    
     function showTabelleAus(){
         
         $this->setUrlXml("Tabelle_Auswarts");
@@ -106,7 +130,9 @@ class xmlRead{
         return $res;
     }
     
-   function storeGames($arrayGames, $needClass){
+    
+    
+    function storeGames($arrayGames, $needClass){
        
        $groupGames = array();
        for($x=0; $x<count($arrayGames);$x++){
@@ -130,9 +156,6 @@ class xmlRead{
    }
  
 
-
-
-
    
    /*
      * The Seter for the construction of the url. 
@@ -142,24 +165,24 @@ class xmlRead{
      * STRING 
      */
     function setUrlXml($data){
-        if (array_key_exists($data, $this->optionsList)) {
+       
         $this->urlXml = "https://www.sis-handball.de/xmlexport/xml_dyn.aspx?"
                 ."user=".$this->getConfiguration(0)
                 ."&pass=".$this->getConfiguration(1)
                 ."&art=".$this->optionsList[$data]
                 ."&auf=".$this->getConfiguration(2); 
-        $this->setXmlArray();
         
-        } else {
-            echo "Index does not exist. ";
-            exit;
-        }
+        // check Url.
+        $this->exceptions->findURL($this->urlXml);
+        
+        $this->setXmlArray($this->urlXml); 
+            
      }
     
-     function getXmlArray(){
+     
+    function getXmlArray(){
          
              return $this->xmlArray;
-         
      }
      
      
@@ -167,20 +190,22 @@ class xmlRead{
      * Make url in an array.
      */
     function setXmlArray(){
-       
-       $xmlData = simplexml_load_file($this->urlXml);
-       $this->xmlArray = (array)$xmlData;
-   
+        
+        $xmlData = simplexml_load_file($this->urlXml);
+        $this->xmlArray = (array)$xmlData;
+        
     }    
     
     
-   function readYaml(){
-    $cache = sfProjectConfiguration::getActive()->getConfigCache(); 
+    function readYaml(){
+        $cache = sfProjectConfiguration::getActive()->getConfigCache(); 
         $cache->registerConfigHandler('config.yaml','sfSimpleYamlConfigHandler'); 
         $path = $cache->CheckConfig('config.yaml'); 
         $data = include $path; 
         return $data;
    }
+
+   
 }
 
 
