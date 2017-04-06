@@ -41,15 +41,15 @@ echo "<br>Tabelle Data in Verein Position 0: ".$tabelle[0]->getVerein();
 
 echo "<hr>";
 echo "<h2>TabelleHeim</h2>";
-$tabelleHeim = $qs->tabelleGames("1220403116", 15);
+$tabelleHeim = $qs->tabelleHeimGames("1220403116", 15);
 
-echo "<br>TabelleHeim Data in Nr Position 0: ".$tabelleHeim[0]->getNr();
-echo "<br>TabelleHeim Data in Verein Position 0: ".$tabelleHeim[0]->getVerein();
+echo "<br>TabelleHeim Data in Nr Position 2: ".$tabelleHeim[2]->getNr();
+echo "<br>TabelleHeim Data in Verein Position 2: ".$tabelleHeim[2]->getVerein();
 
 
 echo "<hr>";
 echo "<h2>TabelleAuswärts</h2>";
-$tabelleAus = $qs->tabelleGames("1220403116", 15);
+$tabelleAus = $qs->tabelleAusGames("1220403116", 15);
 
 echo "<br>TabelleHeim Data in Nr Position 0: ".$tabelleAus[0]->getNr();
 echo "<br>TabelleHeim Data in Verein Position 0: ".$tabelleAus[0]->getVerein();
