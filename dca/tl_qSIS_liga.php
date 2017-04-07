@@ -77,7 +77,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
 	),  
 
         // Palettes
-                'palettes' => array
+        'palettes' => array
                 (
                         'default'       => '{name_legend},type,name,{code_legend},code'
         ),    
