@@ -7,7 +7,7 @@
 $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
 (
  
-	// Config
+// Config
 	'config'   => array
 	(
 		'dataContainer'    => 'Table',
@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
             
             
             
-'global_operations' => array
+        'global_operations' => array
 		(
 			'all' => array
 			(
@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
 			)
 		),
 
-'operations'        => array
+        'operations'        => array
 		(
 			'edit'   => array
 			(
@@ -77,13 +77,13 @@ $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
 		)
 	),  
 
-        // Palettes
-                'palettes' => array
+// Palettes
+        'palettes' => array
                 (
-                        'default'       => '{name_legend},type,name,{code_legend},code'
+                        'default'       => '{query_legend},name,nResults;{query_for_verein},idVerein;{query_for_liga},idLiga'
         ),    
     
-    // Fields
+// Fields
 	'fields'   => array
 	(
 		'id'     => array
@@ -106,36 +106,45 @@ $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
 				'tl_class'        => 'w50',
  
 			),
-			'sql'       => "varchar(255) NOT NULL default ''"
+                        'sql'       => "varchar(255) NOT NULL default ''"
 		),
+            
+                'nResults' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_query']['nResults'],
+			'inputType'               => 'text',
+			'sql'                     => "int(4) unsigned NOT NULL default '0'"
+		),
+            
                 'tstamp' => array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
 		'idVerein' => array
 		(
-			'foreignKey'              => 'tl_qsis_verein.name',
-			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+                       
+			'label'     => &$GLOBALS['TL_LANG']['tl_qsis_query']['idVerein'],
                         'inputType'               => 'select',
-                        'foreignKey'              => 'tl_qsis_liga.name',
-			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
+                        'foreignKey'              => 'tl_qsis_verein.name', 
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                        'sql'                     => "int(10) unsigned NOT NULL default '0'",
+                    
+			
+                    
 		),
+			
+		
             	'idLiga' => array
 		(
-			'foreignKey'              => 'tl_qsis_liga.name',
-			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+                        'label'     => &$GLOBALS['TL_LANG']['tl_qsis_query']['idLiga'],
                         'inputType'               => 'select',
                         'foreignKey'              => 'tl_qsis_liga.name',
-			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                        'sql'                     => "int(10) unsigned NOT NULL default '0'",
 		),
-                'nResults' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_query']['nResults'],
-			
-			'inputType'               => 'text',
-			'sql'                     => "int(4) unsigned NOT NULL default '0'"
-		)
+               
                 
        )
 );
  
+

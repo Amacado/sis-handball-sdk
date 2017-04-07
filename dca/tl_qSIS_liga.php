@@ -7,7 +7,7 @@
 $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
 (
  
-	// Config
+// Config
 	'config'   => array
 	(
 		'dataContainer'    => 'Table',
@@ -32,7 +32,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
 			'panelLayout' => 'filter;sort,search,limit'
 		),
             
-'label'             => array
+        'label'             => array
 		(
 			'fields' => array('name'),
 			'format' => '%s',
@@ -40,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
             
             
             
-'global_operations' => array
+        'global_operations' => array
 		(
 			'all' => array
 			(
@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
 			)
 		),
 
-'operations'        => array
+        'operations'        => array
 		(
 			'edit'   => array
 			(
@@ -76,13 +76,13 @@ $GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
 		)
 	),  
 
-        // Palettes
+// Palettes
         'palettes' => array
                 (
-                        'default'       => '{name_legend},type,name,{code_legend},code'
+                    'default'       => '{name_legend},name,code'
         ),    
     
-    // Fields
+// Fields
 	'fields'   => array
 	(
 		'id'     => array

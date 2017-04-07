@@ -8,8 +8,8 @@
 $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
 (
  
-	// Config
-	'config'   => array
+// Config
+    'config'   => array
 	(
 		'dataContainer'    => 'Table',
 		'enableVersioning' => true,
@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
 	),
 
 // List
-	'list'     => array
+    'list'     => array
 	(
 		'sorting'           => array
 		(
@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
 			'panelLayout' => 'filter;sort,search,limit'
 		),
             
-'label'             => array
+    'label'             => array
 		(
 			'fields' => array('name'),
 			'format' => '%s',
@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
             
             
             
-'global_operations' => array
+    'global_operations' => array
 		(
 			'all' => array
 			(
@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
 			)
 		),
 
-'operations'        => array
+    'operations'        => array
 		(
 			'edit'   => array
 			(
@@ -77,14 +77,14 @@ $GLOBALS['TL_DCA']['tl_qSIS_verein'] = array
 		)
 	),  
 
-        // Palettes
-                'palettes' => array
+// Palettes
+    'palettes' => array
                 (
-                        'default'       => '{name_legend},type,name,{code_legend},code'
+                    'default'       => '{name_legend},name,code'
         ),    
     
-    // Fields
-	'fields'   => array
+// Fields
+    'fields'   => array
 	(
 		'id'     => array
 		(
