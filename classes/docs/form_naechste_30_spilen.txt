@@ -1,0 +1,31 @@
+<NaechsteSpiele>
+  <Spiel>
+    <Liga>001517418000000000000000000000000002239</Liga>
+    <Aktualisierungsdatum>2017-02-27T11:34:57.837+01:00</Aktualisierungsdatum>
+    <SpielDatum>2017-03-30T00:00:00+02:00</SpielDatum>
+    <Mannschaft1>001517418000000000000000000000000002003</Mannschaft1>
+    <Mannschaft2>001517418000000000000000000000000002002</Mannschaft2>
+    <Tore01>0</Tore01>
+    <Tore02>0</Tore02>
+    <Tore1>0</Tore1>
+    <Tore2>0</Tore2>
+    <Punkte1>0</Punkte1>
+    <Punkte2>0</Punkte2>
+    <Halle>0</Halle>
+    <Schiri>0</Schiri>
+    <Anmerkung />
+    <SpielBericht />
+    <SpielVon>2017-03-30T21:00:00+02:00</SpielVon>
+    <SpielBis>2017-03-30T21:29:00+02:00</SpielBis>
+    <ZSGespann>0</ZSGespann>
+    <SBGespann>0</SBGespann>
+    <Heim>HSG Varel-Friesland</Heim>
+    <HeimNr>1220805129</HeimNr>
+    <Gast>TS Groﬂburgwedel</Gast>
+    <GastNr>1220403116</GastNr>
+    <HallenName>unbekannt</HallenName>
+    <HallenStrasse />
+    <HallenOrt xml:space="preserve">  </HallenOrt>
+    <LigaName>Testliga 3. Liga</LigaName>
+    <GespannName>noch nicht angesetzt !!!</GespannName>
+  </Spiel>
