@@ -1,4 +1,3 @@
-option_configuration.txt
+classes/option_configuration.txt
 nbproject/*
-docs/*
-config.json
+classes/config.json
