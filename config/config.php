@@ -20,12 +20,14 @@ $GLOBALS['BE_MOD']['querySIS'] = array(
         
 );
 
+
+
 /**
  * Front end modules
  */
 $GLOBALS['FE_MOD']['querysis'] = array
 (
 	
-       // 'qSISquery_list'     => 'ModuleQuerySISListQuery',
+        'qSIS_saludo'     => 'ModuleQSIS_Saludo',
        // 'qSIS_verein_list'     => 'ModuleQuerySISListVerein',
 );
