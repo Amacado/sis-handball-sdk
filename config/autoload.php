@@ -8,13 +8,7 @@
  * @license LGPL-3.0+
  */
 
-/**
- * Register the namespaces
- */
-ClassLoader::addNamespaces(array
-(
-    'qSIS_Saludo'
-));
+
 
 /**
  * Register the classes
@@ -22,7 +16,8 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
     // Modules
-	'qSIS_Saludo' => 'system/modules/querySIS/modules/ModuleQSIS_Saludo.php',
+	'moduleqsis_hallo' => 'system/modules/querySIS/modules/moduleqsis_hallo.php',
+        'myQuerySIS' => 'system/modules/querySIS/classes/querySis.php',
 ));
 
 
@@ -31,5 +26,5 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_querySIS_saludo' => 'system/modules/querySIS/templates',
+	'mod_querysis_hallo' => 'system/modules/querySIS/templates',
 ));
