@@ -1,6 +1,6 @@
 <?php
 
-
+include ('system/modules/querySIS/classes/querySis.php'); 
 class moduleqsis_hallo extends \Module
 {
 	/**
@@ -14,14 +14,14 @@ class moduleqsis_hallo extends \Module
 	 */
 	protected function compile()
 	{
-       // $m = $this->import('myQuerySIS'); 
-        //$querys = new querySis();
-        // $querys = $m->querySis();
-	// $qs = new $m();
-        // $a1 = $qs->nextGames("001517418000000000000000000000000022000", 15);
+        //$myclass = $this->import('myQuerySIS');    
+       // $m = new a(); 
+        $myclass =  new querySis();
+         $a1 = $myclass->nextGames("001517418000000000000000000000000022000", 15);
        
-        $datainV = "Data in Variable";
-        $this->Template->a = $datainV;
+       $datainV = "Data in Variable";
+       // $datainV = $myclass->hallo();
+        $this->Template->a = $a1;
               
             
 	}

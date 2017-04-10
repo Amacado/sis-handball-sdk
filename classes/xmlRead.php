@@ -26,7 +26,7 @@ class xmlRead{
     function __construct(){
         
         // Access and configuration of access data to the api.
-        $nameFile = "config.json";
+        $nameFile = "C://xampp/htdocs/contaotest/system/modules/querySIS/classes/config.json";
         
         // Check Excepctions.
         $this->exceptions = new myExceptions("Upps!");
