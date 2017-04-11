@@ -17,7 +17,7 @@ ClassLoader::addClasses(array
 (
     // Modules
 	'moduleqsis_hallo'      => 'system/modules/querySIS/modules/moduleqsis_hallo.php',
-        'moduleqsis_nachste'    => 'system/modules/querySIS/modules/moduleqsis_nachste.php',
+        'moduleqsis_list'    => 'system/modules/querySIS/modules/moduleqsis_list.php',
     
 
     
@@ -34,6 +34,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_qsis_nachste' => 'system/modules/querySIS/templates',
+	'mod_qsis_list' => 'system/modules/querySIS/templates',
         'mod_qsis_hallo' => 'system/modules/querySIS/templates',
 ));

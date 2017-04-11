@@ -1,13 +1,13 @@
 <?php
 include_once  ('system/modules/querySIS/classes/querySis.php'); 
 
-class moduleqsis_nachste extends \ContentElement //\Module
+class moduleqsis_list extends \ContentElement //\Module
 {
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate ='mod_qsis_nachste';
+	protected $strTemplate ='mod_qsis_list';
  
 
 
