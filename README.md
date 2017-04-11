@@ -14,11 +14,13 @@ Insert element (QuerySIS) into an article.
 - Select element in the list in the "querySIS" section.
 - Then select the desired Query.
 
-### Installation of the QuerySIS Module in Account
+
+## Installation of the QuerySIS Module in Account
 
 #### Copy files:
-Inside in /System/modules
-Create a directory called querySIS and copy within the files.
+Inside in **/System/modules**
+
+Create a directory called **querySIS** and copy within the files.
 
 The appearance should be as follows:
 
@@ -35,3 +37,88 @@ The appearance should be as follows:
                     |--models
                     |--modules
                     |--templates
+                    |--README.md                   
+                   
+
+### File Modification
+
+It is necessary to modify some files of the **core** of **Contao**.
+
+These modifications serve to be able to dynamically select the querys within the articles, as elements. 
+
+
+#### File Modification autoload.php
+
+It is necessary to modify some files of the core of Contao.
+
+These modifications serve to be able to dynamically select the querys within the articles, as elements.
+
+Modify the file **/ProjectContao/system/modules/core/config/autoload.php**
+
+We have to register the models.
+
+Inside ... **classLoader :: addClasses (array (....**
+
+        /**
+         * Register the classes
+         */
+        ClassLoader::addClasses(array
+        (
+                ...
+
+                // Models
+                'Contao\QsisQueryModel'  => 'system/modules/querySIS/models/QsisQueryModel.php',
+                'Contao\QsisQueryModel'  => 'system/modules/querySIS/models/QsisQueryModel.php',
+                'Contao\QsisQueryModel'  => 'system/modules/querySIS/models/QsisQueryModel.php',
+
+                ...
+
+#### File Modification tl_content.php
+
+
+The table and the form of the contents must be modified.
+
+We need to modify the file: **/ProjectContao/system/modules/core/dca/tl_content.php**
+
+#### Inside the array **palettes** the following line must be added:
+
+
+        // Palettes
+                'palettes' => array
+                (
+                    ...
+                    'querySIS_List_Spiel' => '{type_legend},type;{include_legend},querysis;',
+                    ...
+        ),
+
+#### Inside the array **files** the following line must be added:
+
+        // Fields
+                'fields' => array
+                (
+                    ...
+                    'querysis' => array 
+                    (
+                                'label'                   => &$GLOBALS['TL_LANG']['tl_content']['idQuerySelect'],
+                                'exclude'                 => true,
+                                'inputType'               => 'select',
+                                'foreignKey'              => 'tl_qsis_query.name', 
+                                'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                                'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'submitOnChange'=>true),
+                                'sql'                     => "int(10) unsigned NOT NULL default '0'"
+                    ),
+                    ...
+
+#### Modify the translation file **/ProjectContao/system/modules/core/languages/XX/tl_content.xlf**
+
+In order for the Backend forms to have a translation, the following translations must be applied in the different translation files.
+
+
+        <trans-unit id="tl_content.idQuerySelect.0">
+          <source>Select Query.</source>
+          <target>Your translation</target>
+        </trans-unit>
+        <trans-unit id="tl_content.idQuerySelect.1">
+          <source>This will be the query that will come out in this element</source>
+          <target>Your translation</target>
+        </trans-unit>
