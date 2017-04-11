@@ -1,30 +1,37 @@
 # sis-hanball-sdk
 unofficial sdk for sis-handball.de xml api <http://www.sis-handball.de/xmlexport/>
 
-## Configuration
-The configuration is used to configure the url. This URL is used to call the API.
+## Use in Backend
 
-The configuration is done through the constructor.
+###Process for Admin:
+The type of Query you need is prevailed.
 
-### Description
+Once we have the queries designed, we can insert them into the articles as new elements of the pages.
 
-  $b = new xmlRead(string $user, string $password, string $option);
+Insert element (QuerySIS) into an article.
+- Create article.
+- Add element.
+- Select element in the list in the "querySIS" section.
+- Then select the desired Query.
 
-**$user** = The user for the API.
+###Installation of the QuerySIS Module in Account
 
-**$password** =  The password for the API.
+####Copy files:
+Inside in /System/modules
+Create a directory called querySIS and copy within the files.
 
-**$option** = Is the code used to search between associations or Alias. The code of an association or of a League must be provided.
-
-
-## Use
-
-Process:
-
-- Initialize the class with the configuration parameters.
-- Select the type of listing.
-- We create the object.
-
-- Already access the data in the list.
+The appearance should be as follows:
 
 
+	|--ProjectCantao
+        |--system
+            |--modules
+                |--querySIS
+                    |--assets
+                    |--classes
+                    |--config
+                    |--dca
+                    |--languages
+                    |--models
+                    |--modules
+                    |--templates
