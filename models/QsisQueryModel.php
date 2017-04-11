@@ -11,7 +11,7 @@ namespace Contao;
  * @property string  $name
  * @property integer $code
  * @property integer $nResults
- * 
+ * @property string $typeQuery 
  * 
 */
 

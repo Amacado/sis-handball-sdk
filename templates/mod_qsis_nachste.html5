@@ -1,6 +1,3 @@
-<h1>Nächste Spiel</h1>
-.................
-<br>
-<?= "Variable a - count: ".count($this->b)."<br> Value: ".  $this->b; ?>
-<br>
------------------
+<h1>Query SIS: <?php echo $result['name']; ?> <?= "Id Query: ".$this->IdQuery; ?></h1>
+
+
