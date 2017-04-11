@@ -1,23 +1,24 @@
 <?php
 
+
 namespace Contao;
 
 
 /**
- * Reads and writes Liga
+ * Reads and writes Verein
  *
  * @property integer $id
  * @property string  $name
  * @property integer  $code
 */
 
-class LigaModel extends \Model
+class QsisVereinModel extends \Model
 {
 
 	/**
 	 * Table name
 	 * @var string
 	 */
-	protected static $strTable = 'tl_qSIS_liga';
+	protected static $strTable = 'tl_qSIS_verein';
 
 }

@@ -28,7 +28,8 @@ $GLOBALS['BE_MOD']['querySIS'] = array(
 $GLOBALS['FE_MOD']['querySIS'] = array
 (
 	
-       'qsis_hallo_welt'     => 'moduleqsis_hallo'
+       'qsis_hallo_welt'        => 'moduleqsis_hallo',
+       'qsis_nachste'           => 'moduleqsis_nachste'
 );
 
 
@@ -41,4 +42,6 @@ $GLOBALS['FE_MOD']['querySIS'] = array
  */
 $GLOBALS['TL_CTE']['querySIS'] = array(
     'querySIS Hallo Welt' => 'moduleqsis_hallo',
+    'querySIS_List_Spiel' => 'moduleqsis_nachste'
 );
+

@@ -4,7 +4,7 @@
 /**
  * Table tl_qSIS_liga
  */
-$GLOBALS['TL_DCA']['tl_qSIS_query'] = array
+$GLOBALS['TL_DCA']['tl_qsis_query'] = array
 (
  
 // Config
@@ -80,6 +80,7 @@ $GLOBALS['TL_DCA']['tl_qSIS_query'] = array
 // Palettes
         'palettes' => array
                 (
+            '__selector__'                => array('Teil1', 'Teil2'),
                         'default'       => '{query_legend},name,nResults;{query_for_verein},idVerein;{query_for_liga},idLiga'
         ),    
     

@@ -1,0 +1,6 @@
+<h1>Nächste Spiel</h1>
+.................
+<br>
+<?= "Variable a - count: ".count($this->b)."<br> Value: ".  $this->b; ?>
+<br>
+-----------------

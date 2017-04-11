@@ -15,7 +15,7 @@ namespace Contao;
  * 
 */
 
-class QueryModel extends \Model
+class QsisQueryModel extends \Model
 {
 
 	/**

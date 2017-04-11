@@ -4,7 +4,7 @@
 /**
  * Table tl_qSIS_liga
  */
-$GLOBALS['TL_DCA']['tl_qSIS_liga'] = array
+$GLOBALS['TL_DCA']['tl_qsis_liga'] = array
 (
  
 // Config
