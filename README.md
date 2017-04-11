@@ -15,7 +15,7 @@ Insert element (QuerySIS) into an article.
 - Then select the desired Query.
 
 
-## Installation of the QuerySIS Module in Account
+## Installation of the QuerySIS Module in Contao
 
 #### Copy files:
 Inside in **/System/modules**
