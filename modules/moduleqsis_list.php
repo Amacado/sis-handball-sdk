@@ -24,33 +24,61 @@ class moduleqsis_list extends \ContentElement //\Module
         
         /** @var \Contao\Database\Result $rs */
 	$rs = Database::getInstance()
-		->prepare('SELECT tl_qsis_query.*, tl_qsis_verein.*, tl_qsis_liga.* FROM '
-                        . 'tl_qsis_query , tl_qsis_verein, tl_qsis_liga '
-                        . ' WHERE  tl_qsis_query.id= '.$this->querysis.''
-                        .' AND  tl_qsis_query.idVerein = tl_qsis_verein.id'
-                        . ' AND  tl_qsis_query.idLiga = tl_qsis_liga.id'
-                        . ' ')
+		->prepare('SELECT tl_qsis_query.*  FROM '
+                        . 'tl_qsis_query '
+                        . ' WHERE  tl_qsis_query.id= '.$this->querysis)
 		->execute($queryArgs);
 
         $theQuery = $rs->fetchAllAssoc();
         
+    
+	$this->Template->theQuerySis = $theQuery;
        
-        foreach ($theQuery as $res){
-               
-//        $codeVerein = $res['tl_qsis_verein']['code'];
-//         $codeLiga = $res['tl_qsis_liga']['code'];
-//         $nResults = $res['tl_qsis_query']['nResults'];
-         
-       //  echo "Verein: ".$codeVerein." - Liga: ". $codeLiga." - Nresultados:".$nResults."<br>";
+        if(count($theQuery)>0){
+        
+            $myclass =  new querySis();
+           
+            if($theQuery[0]['typeAgent'] == 'Verein'){
+               $rs = Database::getInstance()
+                    ->prepare('SELECT *  FROM '
+                            . 'tl_qsis_verein '
+                            . ' WHERE id= '.$theQuery[0]['idVerein'])
+                    ->execute($queryArgs);
+
+                 $agent = $rs->fetchAllAssoc();
+
+            } elseif ($theQuery[0]['typeAgent'] == 'Liga') {
+                
+                $rs = Database::getInstance()
+                    ->prepare('SELECT *  FROM '
+                            . 'tl_qsis_verein '
+                            . ' WHERE id= '.$theQuery[0]['idLiga'])
+                    ->execute($queryArgs);
+
+                 $agent = $rs->fetchAllAssoc();
+                
+            }
+
+            switch ($theQuery[0]['typeQuery']) {
+                    case "Last":
+                        $listQuery = $myclass->lastGames($agent[0]['code'], $theQuery[0]['nResults']);
+                        break;
+                    case "Next":
+                       $listQuery = $myclass->nextGames($agent[0]['code'], $theQuery[0]['nResults']);
+                        break;
+                    case "All":
+                        $listQuery = $myclass->allGames($agent[0]['code'], $theQuery[0]['nResults']);
+                        break;
+                    case "TableHeim":
+                        $listQuery = $myclass->tabelleHeimGames($agent[0]['code'], $theQuery[0]['nResults']);
+                        break;
+                    case "TableAus":
+                        $listQuery = $myclass->tabelleAusGames($agent[0]['code'], $theQuery[0]['nResults']);
+                        break;
+            }
         }
         
-        $myclass =  new querySis();
-        $listQuery = $myclass->nextGames($idLiga, $nResults);
-        
-        //echo "La liga= ".$listQuery[0]->getLiga();
-	$this->Template->theQuerySis = $theQuery;
         $this->Template->resultQuerySis = $listQuery;
-        
         $this->Template->IdQuery = $this->querysis;
               
           

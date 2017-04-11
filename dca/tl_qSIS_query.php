@@ -81,7 +81,7 @@ $GLOBALS['TL_DCA']['tl_qsis_query'] = array
         'palettes' => array
                 (
             '__selector__'                => array('Teil1', 'Teil2'),
-                        'default'       => '{query_legend},name,nResults,typeQuery;{query_for_verein},idVerein;{query_for_liga},idLiga'
+                        'default'       => '{query_legend},name,nResults,typeQuery,typeAgent;{query_for_verein},idVerein;{query_for_liga},idLiga'
         ),    
     
 // Fields
@@ -128,14 +128,25 @@ $GLOBALS['TL_DCA']['tl_qsis_query'] = array
 			'label'                 => &$GLOBALS['TL_LANG']['tl_qsis_query']['typeQuery'],
                         
                         'inputType'               => 'select',
-			'options'                 => array('Last', 'Next', 'All', 'Table'),
+			'options'                 => array('Last', 'Next', 'All', 'TableHeim','TableAus'),
                         'sql'                     => "varchar(203) NOT NULL default ''"
                     
 			
                     
 		),
             
-            
+                'typeAgent' => array
+		(
+                       
+			'label'                 => &$GLOBALS['TL_LANG']['tl_qsis_query']['typeAgent'],
+                        
+                        'inputType'               => 'select',
+			'options'                 => array('Verein', 'Liga'),
+                        'sql'                     => "varchar(203) NOT NULL default ''"
+                    
+			
+                    
+		),
 		'idVerein' => array
 		(
                        

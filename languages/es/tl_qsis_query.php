@@ -1,7 +1,11 @@
 <?php
 //$GLOBALS['TL_LANG']['MSC']['all'] = 'Insertar QuerySIS'; This ist in the core.
 
-$GLOBALS['TL_LANG']['tl_qsis_query']['typeQuery'] = "Tipo de Consulta";
+$GLOBALS['TL_LANG']['tl_qsis_query']['typeQuery'][0] = "Tipo de Consulta";
+$GLOBALS['TL_LANG']['tl_qsis_query']['typeQuery'][1] = "Describe en que se basa la búsqeuda.";
+
+$GLOBALS['TL_LANG']['tl_qsis_query']['typeAgent'][0] = "Tipo de Agente";
+$GLOBALS['TL_LANG']['tl_qsis_query']['typeAgent'][1] = "Describe sobre quien se busca.";
 
 $GLOBALS['TL_LANG']['tl_qsis_query']['name'][0] = "Nombre para la Query:";
 $GLOBALS['TL_LANG']['tl_qsis_query']['name'][1] = "Nombre descriptivo del tipo de Query.";
