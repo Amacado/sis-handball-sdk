@@ -1,3 +1,4 @@
+
 <table border="1">
             <thead>
               <tr>
@@ -13,7 +14,16 @@
           <tbody>
                   <tr>
                     <th scope="row"><?= $value->getNr();?></th>
-                    <td><?= $value->getName();?></td>
+                    <td>
+           <?php 
+           
+           if ($value->getVereinsNr() == $this->nOurVerein){
+               ?><b style="color:red;"><?= $value->getName();?></b><?php
+           } else {
+              echo $value->getName();
+           }
+           ?>
+           </td>
                     <td><?= $value->getPunktePlus();?> : <?= $value->getPunkteMinus();?></td>
                   </tr>
            </tbody> 

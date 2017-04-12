@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 	),
 
 // List
-    'list'     => array
+    'list'      => array
 	(
 		'sorting'           => array
 		(
@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 			'panelLayout' => 'filter;sort,search,limit'
 		),
             
-    'label'             => array
+    'label'     => array
 		(
 			'fields' => array('name'),
 			'format' => '%s',
@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 // Palettes
     'palettes' => array
                 (
-                    'default'       => '{name_legend},name,code,idLiga'
+                    'default'       => '{name_legend},name,code,idLiga,image'
         ),    
     
 // Fields
@@ -121,12 +121,22 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 		),
             	'idLiga' => array
 		(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_qsis_query']['idLiga'],
+                        'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_query']['idLiga'],
                         'inputType'               => 'select',
                         'foreignKey'              => 'tl_qsis_liga.name',
 			'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
                         'sql'                     => "int(10) unsigned NOT NULL default '0'",
 		),
+        'image' => array
+		(
+                        'label'                    => &$GLOBALS['TL_LANG']['tl_qsis_query']['image'],
+                        'inputType'                => 'fileTree', 
+                        'eval'                     => array('multiple'=>true,'filesOnly'=>true, 'fieldType'=>'checkbox'), 
+                        'sql'                      => "blob NULL" 
+		),
+        
+        
+        
        )
 );
  

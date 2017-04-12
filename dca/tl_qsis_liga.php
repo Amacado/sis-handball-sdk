@@ -116,7 +116,7 @@ $GLOBALS['TL_DCA']['tl_qsis_liga'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_liga']['code'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'sql'                     => "int(100) unsigned NOT NULL default '0'"
+			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
        )
 );

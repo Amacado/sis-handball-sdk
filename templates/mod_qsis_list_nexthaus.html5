@@ -1,0 +1,10 @@
+
+<div>
+    <div> <?= $this->resultsQuery[0]['SpielDatum']; ?> </div>
+    <div> <?= $this->resultsQuery[0]['Gast']; ?> </div>
+    <div><img src="<?= $this->urlImageRival; ?>" alt="" > </div>
+<div> <?= $this->resultsQuery[0]['HallenName']; ?> </div>
+<div> <?= $this->resultsQuery[0]['HallenStrasse']; ?> </div>
+<div> <?= $this->resultsQuery[0]['HallenOrt']; ?> </div>
+</div>
+

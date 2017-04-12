@@ -21,3 +21,6 @@ $GLOBALS['TL_LANG']['tl_qsis_verein']['code'][1] = 'Código facilitado por SIS p
 
 $GLOBALS['TL_LANG']['tl_qsis_verein']['code'][0] = 'Código de Liga';
 $GLOBALS['TL_LANG']['tl_qsis_verein']['code'][1] = 'Código de la liga facilitado por SIS para esta Verein.';
+
+$GLOBALS['TL_LANG']['tl_qsis_verein']['image'][0] = 'Imagen de la Verein';
+$GLOBALS['TL_LANG']['tl_qsis_verein']['image'][1] = 'Selecciona el escudo que representa esta Verein.';
