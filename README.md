@@ -1,6 +1,16 @@
 # sis-hanball-sdk
 unofficial sdk for sis-handball.de xml api <http://www.sis-handball.de/xmlexport/>
 
+## What does QuerySIS do?
+
+QuerySIS obtains the results of the league and teams associated with **SIS Handball**.
+
+To use it must be registered.
+
+The system **only** provides information about the registered partnership.
+
+
+
 ## Use in Backend
 
 ### Process for Admin:
@@ -8,11 +18,18 @@ The type of Query you need is prevailed.
 
 Once we have the queries designed, we can insert them into the articles as new elements of the pages.
 
+A json file must be created with the configuration data. 
+
+The location of the file must be in **/ProjectContao/system/modules/querysis/classes/config.json**
+
+There is a file in the same location called **config_EXAMPLE.json** to use as an example.
+
+
 Insert element (QuerySIS) into an article.
 - Create article.
-- Add element.
-- Select element in the list in the "querySIS" section.
-- Then select the desired Query.
+- Add element (QuerSIS).
+- Select the options (Team and list type).
+- and Save.
 
 
 ## Installation of the QuerySIS Module in Contao
@@ -87,7 +104,7 @@ We need to modify the file: **/ProjectContao/system/modules/core/dca/tl_content.
                 'palettes' => array
                 (
                     ...
-                    'querySIS_List_Spiel' => '{type_legend},type;{include_legend},querysis;',
+                    'querySIS_List_Spiel' => '{type_legend},type,querysisTeam;{include_legend},querysis;',
                     ...
         ),
 
@@ -97,15 +114,25 @@ We need to modify the file: **/ProjectContao/system/modules/core/dca/tl_content.
                 'fields' => array
                 (
                     ...
+                    'querysisTeam' => array 
+                    (
+                                'label'                   => &$GLOBALS['TL_LANG']['tl_content']['idQuerySelect'],
+                                'exclude'                 => true,
+                                'inputType'               => 'select',
+                                'foreignKey'              => 'tl_qsis_verein.name', 
+                                'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                                'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'submitOnChange'=>true),
+                                'sql'                     => "int(10) unsigned NOT NULL default '0'"
+                    ),
+
+
                     'querysis' => array 
                     (
                                 'label'                   => &$GLOBALS['TL_LANG']['tl_content']['idQuerySelect'],
                                 'exclude'                 => true,
-                                'inputType'               => 'select',            
                                 'inputType'               => 'radio',
                                 'options'                 => array('Tabelle', 'Next', 'All'),
-                                'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'submitOnChange'=>true),
-                                'sql'                     => "int(10) unsigned NOT NULL default '0'"
+                                'sql'                     => "varchar(20) NOT NULL default ''"
                     ),
                     ...
 
