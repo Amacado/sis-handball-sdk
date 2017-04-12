@@ -9,21 +9,20 @@ To use it must be registered.
 
 The system **only** provides information about the registered partnership.
 
-
-
-## Use in Backend
-
 ### Process for Admin:
+
 The type of Query you need is prevailed.
 
 Once we have the queries designed, we can insert them into the articles as new elements of the pages.
 
 A json file must be created with the configuration data. 
 
-The location of the file must be in **/ProjectContao/system/modules/querysis/classes/config.json**
+MoThe location of the file must be in **/ProjectContao/system/modules/querysis/classes/config.json**
 
 There is a file in the same location called **config_EXAMPLE.json** to use as an example.
 
+
+## Use in Backend
 
 Insert element (QuerySIS) into an article.
 - Create article.
