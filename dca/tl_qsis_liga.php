@@ -2,7 +2,7 @@
  
  
 /**
- * Table tl_qSIS_liga
+ * Table tl_qsis_liga
  */
 $GLOBALS['TL_DCA']['tl_qsis_liga'] = array
 (
@@ -111,13 +111,13 @@ $GLOBALS['TL_DCA']['tl_qsis_liga'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-                'code'    => array
+               'code'    => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_liga']['code'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'sql'                     => "int(60) unsigned NOT NULL default '0'"
-		)
+			'sql'                     => "int(100) unsigned NOT NULL default '0'"
+		),
        )
 );
  

@@ -1,0 +1,31 @@
+
+ <table border="1">
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Heim</th>
+                <th scope="col">Gast</th>
+                <th scope="col">Halbzeit</th>
+                <th scope="col">Ergebnis</th>
+              </tr>
+           </thead>
+       <?php
+       foreach($this->resultsQuery as $value){
+
+           ?>
+          <tbody>
+                  <tr>
+                    <th scope="row"><?= $value->getSpielDatum();?></th>
+                    <td><?= $value->getHeim();?></td>
+                    <td><?= $value->getGast();?></td>
+                    <td><?= $value->getTore01();?> : <?= $value->getTore02();?></td>
+                    <td><?= $value->getTore1();?> : <?= $value->getTore2();?></td>
+                  </tr>
+           </tbody> 
+
+           <?php
+           } 
+           ?>
+
+
+    </table>

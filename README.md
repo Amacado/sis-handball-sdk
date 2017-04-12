@@ -101,9 +101,9 @@ We need to modify the file: **/ProjectContao/system/modules/core/dca/tl_content.
                     (
                                 'label'                   => &$GLOBALS['TL_LANG']['tl_content']['idQuerySelect'],
                                 'exclude'                 => true,
-                                'inputType'               => 'select',
-                                'foreignKey'              => 'tl_qsis_query.name', 
-                                'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                                'inputType'               => 'select',            
+                                'inputType'               => 'radio',
+                                'options'                 => array('Tabelle', 'Next', 'All'),
                                 'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'submitOnChange'=>true),
                                 'sql'                     => "int(10) unsigned NOT NULL default '0'"
                     ),

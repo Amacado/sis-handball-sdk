@@ -1,4 +1,5 @@
 <?php
+
 include ("spiel.php");
 include ("platzierung.php");
 include ("MyExceptions.php");
@@ -30,16 +31,19 @@ class xmlRead{
         
         // Check Excepctions.
         $this->exceptions = new myExceptions("Upps!");
-        $this->exceptions->findFile($nameFile);
         
+        $this->exceptions->findFile($nameFile);
+
         $data = file_get_contents($nameFile); 
         $conecction = json_decode($data, true);
-        
+
         // Check Data
         $this->exceptions->checkUserPass($conecction["conection"]); 
-        
+
         $this->setConfiguration($conecction["conection"]["user"]);
         $this->setConfiguration($conecction["conection"]["password"]);
+           
+        
        
     }
    
@@ -176,7 +180,7 @@ class xmlRead{
         $this->exceptions->findURL($this->urlXml);
         
         $this->setXmlArray($this->urlXml); 
-            
+        
      }
     
      

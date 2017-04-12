@@ -4,10 +4,7 @@
  */
 $GLOBALS['BE_MOD']['querySIS'] = array(
     
-    'Query' => array(
-	'tables' => array('tl_qsis_query'), 
-	'icon'   => 'system/modules/querySIS/assets/images/icon.png'
-        ),
+
      'Liga' => array(
 	'tables' => array('tl_qsis_liga'),
 	'icon'   => 'system/modules/querySIS/assets/images/icon.png'
@@ -20,7 +17,7 @@ $GLOBALS['BE_MOD']['querySIS'] = array(
         
 );
 
-
+$GLOBALS['FE_MOD']['querySIS']['myquerySIS'] = 'system/modules/querySIS/classes/querySis';
 
 /**
  * Front end modules
@@ -28,7 +25,6 @@ $GLOBALS['BE_MOD']['querySIS'] = array(
 $GLOBALS['FE_MOD']['querySIS'] = array
 (
 	
-       'qsis_hallo_welt'        => 'moduleqsis_hallo',
        'qsis_list'           => 'moduleqsis_list'
 );
 
@@ -41,7 +37,7 @@ $GLOBALS['FE_MOD']['querySIS'] = array
  * Content elements
  */
 $GLOBALS['TL_CTE']['querySIS'] = array(
-    'querySIS Hallo Welt' => 'moduleqsis_hallo',
+    
     'querySIS_List_Spiel' => 'moduleqsis_list'
 );
 

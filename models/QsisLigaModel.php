@@ -8,7 +8,7 @@ namespace Contao;
  *
  * @property integer $id
  * @property string  $name
- * @property integer  $code
+ * @property string  $code
 */
 
 class QsisLigaModel extends \Model
@@ -18,6 +18,6 @@ class QsisLigaModel extends \Model
 	 * Table name
 	 * @var string
 	 */
-	protected static $strTable = 'tl_qSIS_liga';
+	protected static $strTable = 'tl_qsis_liga';
 
 }

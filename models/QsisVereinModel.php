@@ -10,6 +10,7 @@ namespace Contao;
  * @property integer $id
  * @property string  $name
  * @property integer  $code
+ * @property integer  $idLiga
 */
 
 class QsisVereinModel extends \Model

@@ -1,0 +1,27 @@
+<table border="1">
+            <thead>
+              <tr>
+                <th scope="col">Nr.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Punkt</th>
+              </tr>
+           </thead>
+       <?php
+    foreach($this->resultsQuery as $value){
+
+           ?>
+          <tbody>
+                  <tr>
+                    <th scope="row"><?= $value->getNr();?></th>
+                    <td><?= $value->getName();?></td>
+                    <td><?= $value->getPunktePlus();?> : <?= $value->getPunkteMinus();?></td>
+                  </tr>
+           </tbody> 
+
+           <?php
+           } 
+           ?>
+
+
+    </table>
+

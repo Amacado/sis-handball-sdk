@@ -22,7 +22,9 @@ ClassLoader::addClasses(array
 
     
     // Classes
-    'myQuerySIS'            => 'system/modules/querySIS/classes/querySis.php',
+    //'Contao\querySis'                  => 'system/modules/querysis/classes/querySis.php',
+    //'Contao\querySis'            => 'system/modules/querysis/classes/querySis.php',
+    //'Contao\xmlRead'            => 'system/modules/querysis/classes/xmlRead.php',
 ));
 
 
@@ -35,5 +37,8 @@ ClassLoader::addClasses(array
 TemplateLoader::addFiles(array
 (
 	'mod_qsis_list' => 'system/modules/querySIS/templates',
+        'mod_qsis_list_tabelle' => 'system/modules/querySIS/templates',
+        'mod_qsis_list_next' => 'system/modules/querySIS/templates',
+        'mod_qsis_list_all' => 'system/modules/querySIS/templates',
         'mod_qsis_hallo' => 'system/modules/querySIS/templates',
 ));

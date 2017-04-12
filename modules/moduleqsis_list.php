@@ -1,5 +1,7 @@
 <?php
-include_once  ('system/modules/querySIS/classes/querySis.php'); 
+//require_once  ('system/modules/querysis/classes/querySis.php');  
+require_once  ('c:/xampp/htdocs/contaotest/system/modules/querysis/classes/querySis.php');  
+//namespace Contao;
 
 class moduleqsis_list extends \ContentElement //\Module
 {
@@ -7,7 +9,7 @@ class moduleqsis_list extends \ContentElement //\Module
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate ='mod_qsis_list';
+        protected $strTemplate ='';
  
 
 
@@ -22,65 +24,41 @@ class moduleqsis_list extends \ContentElement //\Module
             global $objPage;
         
         
-        /** @var \Contao\Database\Result $rs */
-	$rs = Database::getInstance()
-		->prepare('SELECT tl_qsis_query.*  FROM '
-                        . 'tl_qsis_query '
-                        . ' WHERE  tl_qsis_query.id= '.$this->querysis)
-		->execute($queryArgs);
-
-        $theQuery = $rs->fetchAllAssoc();
         
-    
-	$this->Template->theQuerySis = $theQuery;
        
-        if(count($theQuery)>0){
-        
+            if($this->querysis){
             $myclass =  new querySis();
-           
-            if($theQuery[0]['typeAgent'] == 'Verein'){
-               $rs = Database::getInstance()
-                    ->prepare('SELECT *  FROM '
-                            . 'tl_qsis_verein '
-                            . ' WHERE id= '.$theQuery[0]['idVerein'])
-                    ->execute($queryArgs);
-
-                 $agent = $rs->fetchAllAssoc();
-
-            } elseif ($theQuery[0]['typeAgent'] == 'Liga') {
-                
+            
                 $rs = Database::getInstance()
-                    ->prepare('SELECT *  FROM '
-                            . 'tl_qsis_verein '
-                            . ' WHERE id= '.$theQuery[0]['idLiga'])
-                    ->execute($queryArgs);
+                    ->prepare('SELECT tl_qsis_verein.name, tl_qsis_verein.code, tl_qsis_liga.code as codeLiga FROM '
+                            . 'tl_qsis_verein INNER JOIN  tl_qsis_liga ON tl_qsis_liga.id = tl_qsis_verein.idLiga'
+                            . ' WHERE tl_qsis_verein.id= ? ')
+                    ->execute($this->querysisTeam);
+                $agent = $rs->fetchAllAssoc();
+  
 
-                 $agent = $rs->fetchAllAssoc();
-                
+                switch ($this->querysis) {
+                        case "Tabelle":
+                          
+                            $this->strTemplate='mod_qsis_list_tabelle'; 
+                        
+                            $listQuery = $myclass->tabelleGames($agent[0]['codeLiga']);
+                            break;
+                        case "Next":
+                           $this->strTemplate='mod_qsis_list_next';
+                           $listQuery = $myclass->nextGames($agent[0]['code'], 1);
+                            break;
+                        case "All":
+                            $this->strTemplate='mod_qsis_list_all';
+                            $listQuery = $myclass->allGames($agent[0]['codeLiga']);
+                            break;
+                }
             }
-
-            switch ($theQuery[0]['typeQuery']) {
-                    case "Last":
-                        $listQuery = $myclass->lastGames($agent[0]['code'], $theQuery[0]['nResults']);
-                        break;
-                    case "Next":
-                       $listQuery = $myclass->nextGames($agent[0]['code'], $theQuery[0]['nResults']);
-                        break;
-                    case "All":
-                        $listQuery = $myclass->allGames($agent[0]['code'], $theQuery[0]['nResults']);
-                        break;
-                    case "TableHeim":
-                        $listQuery = $myclass->tabelleHeimGames($agent[0]['code'], $theQuery[0]['nResults']);
-                        break;
-                    case "TableAus":
-                        $listQuery = $myclass->tabelleAusGames($agent[0]['code'], $theQuery[0]['nResults']);
-                        break;
-            }
-        }
-        
-        $this->Template->resultQuerySis = $listQuery;
-        $this->Template->IdQuery = $this->querysis;
+        $this->Template = new FrontendTemplate($this->strTemplate);  
+ 
+        $this->Template->resultsQuery =  $listQuery;    
+        $this->Template->typeQuery = $this->querysis;
               
-          
-	}
+        }
+	
 }

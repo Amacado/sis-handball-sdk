@@ -1,0 +1,11 @@
+
+      
+<div>
+    <div<?= $this->resultsQuery[0]->getSpielDatum()?>div>
+    <div><?= $this->resultsQuery[0]->getHeim()?></div>
+    <div>Vs.</div>
+    <div><?= $this->resultsQuery[0]->getGast()?></div>
+    <div>???<div>
+
+</div>
+

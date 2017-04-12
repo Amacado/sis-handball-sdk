@@ -1,3 +1,85 @@
-<h1>Query SIS: <?php echo $result['name']; ?> <?= "Id Query: ".$this->IdQuery; ?></h1>
+
+<h1>QuerySIS</h1>
+TypeQuery: <?php echo $this->querysis;?><br>
+
+<?php if ($this->querysis == 'Tabelle') {
+    ?> 
+    <table border="1">
+            <thead>
+              <tr>
+                <th scope="col">Nr.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Punkt</th>
+              </tr>
+           </thead>
+       <?php
+       foreach($this->resultsQuery as $value){
+
+           ?>
+          <tbody>
+                  <tr>
+                    <th scope="row"><?= $value->getNr();?></th>
+                    <td><?= $value->getName();?></td>
+                    <td><?= $value->getPunktePlus();?> : <?= $value->getPunkteMinus();?></td>
+                  </tr>
+           </tbody> 
+
+           <?php
+           } 
+           ?>
 
 
+    </table>
+    <?php
+    }elseif ($this->querysis == 'Next') {
+        
+        ?>
+            <div>
+                <div<?= $this->resultsQuery[0]->getSpielDatum()?>div>
+                <div><?= $this->resultsQuery[0]->getHeim()?></div>
+                <div>Vs.</div>
+                <div><?= $this->resultsQuery[0]->getGast()?></div>
+                <div>???<div>
+
+            </div>
+     <?php   
+    }elseif ($this->querysis == 'All') {
+        ?>
+
+
+
+
+ <table border="1">
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Heim</th>
+                <th scope="col">Gast</th>
+                <th scope="col">Halbzeit</th>
+                <th scope="col">Ergebnis</th>
+              </tr>
+           </thead>
+       <?php
+       foreach($this->resultsQuery as $value){
+
+           ?>
+          <tbody>
+                  <tr>
+                    <th scope="row"><?= $value->getSpielDatum();?></th>
+                    <td><?= $value->getHeim();?></td>
+                    <td><?= $value->getGast();?></td>
+                    <td><?= $value->getTore01();?> : <?= $value->getTore02();?></td>
+                    <td><?= $value->getTore1();?> : <?= $value->getTore2();?></td>
+                  </tr>
+           </tbody> 
+
+           <?php
+           } 
+           ?>
+
+
+    </table>
+<?php
+        
+    }
+?>

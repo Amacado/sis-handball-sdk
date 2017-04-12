@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 // Palettes
     'palettes' => array
                 (
-                    'default'       => '{name_legend},name,code'
+                    'default'       => '{name_legend},name,code,idLiga'
         ),    
     
 // Fields
@@ -117,8 +117,16 @@ $GLOBALS['TL_DCA']['tl_qsis_verein'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_qsis_verein']['code'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'sql'                     => "int(60) unsigned NOT NULL default '0'"
-		)
+			'sql'                     => "int(100) unsigned NOT NULL default '0'"
+		),
+            	'idLiga' => array
+		(
+                        'label'     => &$GLOBALS['TL_LANG']['tl_qsis_query']['idLiga'],
+                        'inputType'               => 'select',
+                        'foreignKey'              => 'tl_qsis_liga.name',
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager'),
+                        'sql'                     => "int(10) unsigned NOT NULL default '0'",
+		),
        )
 );
  
