@@ -23,7 +23,7 @@
 
                     <td>
 
-                    <?php 
+                    <?php
 
                     if ($value->getHeimNr() == $this->nOurVerein){
                         ?><b style="color:red;"><?= $value->getHeim();?></b><?php
@@ -36,7 +36,7 @@
 
                     <td>
 
-                    <?php 
+                    <?php
 
                     if ($value->getGastNr() == $this->nOurVerein){
                         ?><b style="color:red;"><?= $value->getGast();?></b><?php
@@ -48,60 +48,125 @@
                     <td><?= $value->getTore01();?> : <?= $value->getTore02();?></td>
                     <td><?= $value->getTore1();?> : <?= $value->getTore2();?></td>
                   </tr>
-           </tbody> 
+           </tbody>
 
            <?php
-           } 
+           }
            ?>
 
         <tfoot>
            <tr>
             <th colspan="5">
                     <?php
-                         if($this->pageActuale) {
-                          $pActuale = $this->pageActuale; } else {
-                          $pActuale = "1"; }  
-                       
+
+                          $pActuale = $this->pageGet;
+
                          if ($pActuale+1 > $this->totalPage){
-                           $nextPage = 0;
+                            $nextPage = 0;
                             } else {
                             $nextPage = $pActuale+1;
                             }
- 
+
                          if ($pActuale-1 <= 0){
-                           $lastPage = 0;
+                           $previousPage = 0;
                             } else {
-                            $lastPage = $lastPage-1;
+                            $previousPage = $pActuale-1;
                             }
 
                         ?>
 
                     <div>
-                    <a href="#?page=1" >First</a>
-<?php
+                    <?php
+                    if($previousPage != 0){
+                      echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page=1">First</a>';
+                      }
+                      ?>
+                    </div>
 
-                    echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page=2">Last:xx </a>';  
-?>                
-    </div>
-                    <div>
-                    <?php
-                    if($lastPage!=0){
-                    //echo '<a href="#?page='.$lastPage.'" >Last</a>';
-echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$lastPage.'">Last: </a>';  
+<?php
+$showPagPrevius = 5;
+$resfinal = array();
+if(  $pActuale >1){
+  $showPagPrevius = $showPagPrevius-$pActual ;
+
+  for ($x=0; $x<=$showPagPrevius;$x++){
+    $res = $pActuale-$x;
+    if($res>0 && $res!=$pActuale){
+    $resfinal[$x] = $res;
+
+    }
+
+  }
+  $newRes= array_reverse($resfinal);
 }
-                    ?>
-                    </div>
+
+for($y=0;$y<count($newRes);$y++){
+
+echo '[ <a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$newRes[$y].'">'.$newRes[$y].'</a> ]';
+}
+
+
+
+?>
+
+
                     <div>
-                    Page: <?= $pActuale;?> von <?= $this->totalReg;?>
-                    </div>
-                    <div
                     <?php
-                    if($nextPage!=0){
-                    echo '<a href="#?page='.$nextPage.'" >Next</a>';}
+                    if($previousPage != 0){
+
+                    echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$previousPage.'">Previous </a>';
+                    }
                     ?>
                     </div>
                     <div>
-                    End
+                    Page: <?= $pActuale;?> von <?= $this->totalPage;?>
+                    </div>
+                    <div>
+                    <?php
+                    if($nextPage != 0){
+                    echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$nextPage.'">Next </a>';
+                    }
+                    ?>
+
+                    </div>
+                    <div>
+                    <?php
+                    $showPagNext = 5;
+                    $resfinal = array();
+                    if(  $pActuale < $this->totalPage){
+                      $showPagNext = $showPagNext-$pActual ;
+
+                      for ($x=0; $x<=$showPagNext;$x++){
+                        $res = $pActuale+$x;
+                        if($res<$this->totalPage && $res!=$pActuale){
+                        $resfinal[$x] = $res;
+
+                        }
+
+                      }
+
+                    }
+
+                    for($y=0;$y<=count($resfinal);$y++){
+                    if(isset($resfinal[$y])){
+                    echo '[ <a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$resfinal[$y].'">'.$resfinal[$y].'</a> ]';
+                    }
+                    }
+
+
+
+                    ?>
+
+                    </div>
+                    <div>
+                    <?php
+
+                    if($pActuale < $this->totalPage ){
+                    echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$this->totalPage.'">End</a>';
+
+                    }
+
+                      ?>
                     </div>
             </th>
            </tr>
