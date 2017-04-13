@@ -22,6 +22,8 @@ ClassLoader::addClasses(array
 	//classes
 	'querySis' => 'system/modules/querysis/classes/querySis.php',
 
+	
+
 ));
 
 
