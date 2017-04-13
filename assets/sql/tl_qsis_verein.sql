@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2017 a las 09:37:50
+-- Tiempo de generación: 13-04-2017 a las 10:05:33
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -19,21 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `contaotest`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tl_qsis_verein`
---
-
-CREATE TABLE `tl_qsis_verein` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `code` int(100) UNSIGNED NOT NULL DEFAULT '0',
-  `idLiga` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `image` blob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tl_qsis_verein`
@@ -57,25 +42,6 @@ INSERT INTO `tl_qsis_verein` (`id`, `name`, `tstamp`, `code`, `idLiga`, `image`)
 (16, 'MSG Groß Umstadt', 1492068621, 1410901117, 1, 0x613a313a7b693a303b733a31363a22fee338c4201a11e78354ac2b6e865c1c223b7d),
 (17, 'TV Krichzell', 1492068707, 1410901127, 1, 0x613a313a7b693a303b733a31363a2238e28e0c201b11e78354ac2b6e865c1c223b7d);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `tl_qsis_verein`
---
-ALTER TABLE `tl_qsis_verein`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `tl_qsis_verein`
---
-ALTER TABLE `tl_qsis_verein`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

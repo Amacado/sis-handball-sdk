@@ -148,3 +148,21 @@ In order for the Backend forms to have a translation, the following translations
           <source>This will be the query that will come out in this element</source>
           <target>Your translation</target>
         </trans-unit>
+
+
+##Assets
+
+In the module directory within assets. Find information to upload the data with the 
+Männer Ost League teams as well as the Ost League data. Also the logos to be able to update.
+
+###Database:
+**League Data**: assets/sql/tl_qsis_liga.sql
+**Teams Data**: assets/sql/tl_qsis_verien.sql
+
+**Logos teams Liga Männer Ost**: assets/images/logosVereinLigaMeannerOST
+
+###Process to upload information:
+- Update the BBDD with the files **tl_qsis_liga.sql** and **tl_qsis_verien.sql**
+- Upload the image files (logos) using the Contao file manager.
+
+Then you have to update the records of each computer with the new location of images.
