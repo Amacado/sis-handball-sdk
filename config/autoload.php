@@ -17,8 +17,11 @@ ClassLoader::addClasses(array
 (
     // Modules
 	'moduleqsis_hallo'      => 'system/modules/querySIS/modules/moduleqsis_hallo.php',
-        'moduleqsis_list'    => 'system/modules/querySIS/modules/moduleqsis_list.php',
-    
+  'moduleqsis_list'    => 'system/modules/querySIS/modules/moduleqsis_list.php',
+
+	//classes
+	'querySis' => 'system/modules/querysis/classes/querySis.php',
+
 ));
 
 

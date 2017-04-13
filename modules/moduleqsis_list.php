@@ -1,6 +1,7 @@
 <?php
 //require_once  ('system/modules/querysis/classes/querySis.php');
-require_once  ('c:/xampp/htdocs/contaotest/system/modules/querysis/classes/querySis.php');
+//require_once  ('c:/xampp/htdocs/contaotest/system/modules/querysis/classes/querySis.php');
+//require_once  ('../system/modules/querysis/classes/querySis.php');
 //namespace Contao;
 
 class moduleqsis_list extends \ContentElement //\Module
