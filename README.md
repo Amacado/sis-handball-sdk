@@ -162,6 +162,7 @@ Männer Ost League teams as well as the Ost League data. Also the logos to be ab
 
 ### Database:
 **League Data**: assets/sql/tl_qsis_liga.sql
+
 **Teams Data**: assets/sql/tl_qsis_verien.sql
 
 **Logos teams Liga Männer Ost**: assets/images/logosVereinLigaMeannerOST

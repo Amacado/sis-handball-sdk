@@ -2,7 +2,7 @@
  <table border="1">
             <thead>
               <tr>
-                <th scope="col">Datum</th>
+                <th scope="col">Spiel Datum</th>
                 <th scope="col">Heim</th>
                 <th scope="col">Gast</th>
                 <th scope="col">Halbzeit</th>
@@ -15,9 +15,36 @@
            ?>
           <tbody>
                   <tr>
-                    <th scope="row"><?= $value->getSpielDatum();?></th>
-                    <td><?= $value->getHeim();?></td>
-                    <td><?= $value->getGast();?></td>
+                    <th scope="row">
+                    <?php
+                    $date = date_create($value->getSpielDatum());
+                    echo  date_format($date, 'd. m. y');?>
+                    </th>
+
+                    <td>
+
+                    <?php 
+
+                    if ($value->getHeimNr() == $this->nOurVerein){
+                        ?><b style="color:red;"><?= $value->getHeim();?></b><?php
+                    } else {
+                       echo $value->getHeim();
+                    }
+                    ?>
+
+                    </td>
+
+                    <td>
+
+                    <?php 
+
+                    if ($value->getGastNr() == $this->nOurVerein){
+                        ?><b style="color:red;"><?= $value->getGast();?></b><?php
+                    } else {
+                       echo $value->getGast();
+                    }
+                    ?>
+                    </td>
                     <td><?= $value->getTore01();?> : <?= $value->getTore02();?></td>
                     <td><?= $value->getTore1();?> : <?= $value->getTore2();?></td>
                   </tr>
@@ -27,5 +54,25 @@
            } 
            ?>
 
-
+        <tfoot>
+           <tr>
+            <th colspan="5">
+                    <div>
+                    First
+                    </div>
+                    <div>
+                    last
+                    </div>
+                    <div>
+                    Page: x
+                    </div>
+                    <div>
+                    next
+                    </div>
+                    <div>
+                    End
+                    </div>
+            </th>
+           </tr>
+        </tfoot>
     </table>
