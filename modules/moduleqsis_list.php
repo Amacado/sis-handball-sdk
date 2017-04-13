@@ -11,8 +11,8 @@ class moduleqsis_list extends \ContentElement //\Module
 	 */
         protected $strTemplate ='';
  
-
-
+        // n registrer for page.
+        private $regPage = 2;
         
 	/**
 	 * Compile the current element
@@ -57,6 +57,14 @@ class moduleqsis_list extends \ContentElement //\Module
                         case "All":
                             $this->strTemplate='mod_qsis_list_all';
                             $listQuery = $myclass->allGames($agent[0]['codeLiga']);
+                            $totalPage = count($listQuery)/ $this->regPage;
+                            
+                            if($this->Input->get('page')){
+                                $pageGet = $this->Input->get('page');
+                            } else {
+                                $pageGet = 1;
+                            }
+                            $listQuery = array_slice($listQuery, 0, $this->regPage);
                             break;
                         case "NextHaus":
                             $this->strTemplate='mod_qsis_list_nexthaus';
@@ -104,6 +112,13 @@ class moduleqsis_list extends \ContentElement //\Module
             }
         $this->Template = new FrontendTemplate($this->strTemplate);  
  
+        if($this->querysis=="All"){
+            // Data for pagination.
+            $this->Template->totalPage =  $totalPage;
+            $this->Template->pageActuale = $pageGet;
+            }
+
+        
         $this->Template->urlImageRival =  $valorUrlImageRival;
         $this->Template->resultsQuery =  $listQuery; 
         $this->Template->nOurVerein = $agent[0]['code'];

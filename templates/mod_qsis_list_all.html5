@@ -57,17 +57,48 @@
         <tfoot>
            <tr>
             <th colspan="5">
+                    <?php
+                         if($this->pageActuale) {
+                          $pActuale = $this->pageActuale; } else {
+                          $pActuale = "1"; }  
+                       
+                         if ($pActuale+1 > $this->totalPage){
+                           $nextPage = 0;
+                            } else {
+                            $nextPage = $pActuale+1;
+                            }
+ 
+                         if ($pActuale-1 <= 0){
+                           $lastPage = 0;
+                            } else {
+                            $lastPage = $lastPage-1;
+                            }
+
+                        ?>
+
                     <div>
-                    First
+                    <a href="#?page=1" >First</a>
+<?php
+
+                    echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page=2">Last:xx </a>';  
+?>                
+    </div>
+                    <div>
+                    <?php
+                    if($lastPage!=0){
+                    //echo '<a href="#?page='.$lastPage.'" >Last</a>';
+echo '<a href="'.parse_url(\Environment::get('request'), PHP_URL_PATH).'?page='.$lastPage.'">Last: </a>';  
+}
+                    ?>
                     </div>
                     <div>
-                    last
+                    Page: <?= $pActuale;?> von <?= $this->totalReg;?>
                     </div>
-                    <div>
-                    Page: x
-                    </div>
-                    <div>
-                    next
+                    <div
+                    <?php
+                    if($nextPage!=0){
+                    echo '<a href="#?page='.$nextPage.'" >Next</a>';}
+                    ?>
                     </div>
                     <div>
                     End
